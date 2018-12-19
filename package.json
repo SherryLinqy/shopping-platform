@@ -1,0 +1,19 @@
+{
+  "name": "web-project",
+  "version": "1.0.0",
+  "description": "web system",
+  "main": "",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "author": "Lin",
+  "license": "ISC",
+  "dependencies": {
+    "fs-promise": "^2.0.3",
+    "koa": "^2.2.0",
+    "koa-body": "^2.0.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.0.0",
+    "koa-router": "^7.2.0"
+  }
+}
