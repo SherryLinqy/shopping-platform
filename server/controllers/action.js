@@ -54,7 +54,7 @@ async function del(ctx, next){
   } 
 }
 //修改
-async function update(){
+async function update(ctx, next){
   try{
     const query = ctx.request.query;
     const param = {username: query.username};
@@ -70,6 +70,8 @@ async function update(){
 //搜索
 async function search(ctx, next){
   try{
+    ctx.set("Access-Control-Allow-Origin", "*");
+
     let param = ctx.request.query;
     const result = await DB.search(USER_TABLE, param);
     const response = result.length>0?successRes(result):errorRes('搜索数据失败');

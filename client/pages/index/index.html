@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="jfkas" id="input"/>
+    <input type="button" value="提交" id="1"/>
+    <div id="div"></div>
+</body>
+<script>
+   var butt=document.getElementById("1");
+   butt.addEventListener("click",function(){
+       var id = document.getElementById("input").value;
+       id = Number(id,10) ;
+       ajax(id);
+   })
+   
+
+   function ajax(id){
+       var xhr = new XMLHttpRequest();
+       xhr.onreadystatechange = function(){
+           if(xhr.readyState == 4){
+               if(xhr.status ==200 ){
+                   var obj = JSON.parse(xhr.responseText);
+                   console.log(obj);
+                   document.getElementById("div").innerHTML = obj.result[0].username;
+               }
+               else{
+                alert("defalut");
+               }
+               
+           }
+       }
+       xhr.open("get","http://localhost:8094/search?id=" + id, true);
+       xhr.send(null);
+   }
+
+
+</script>
+</html>
